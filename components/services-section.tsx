@@ -1,0 +1,131 @@
+import { Wrench, Settings, Shield } from "lucide-react"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+
+const services = [
+  {
+    icon: Settings,
+    title: "INSTALLATION",
+    description:
+      "La sécurité commence par une installation réalisée dans les règles de l'art. Nos experts qualifiés prennent en charge l'installation de vos systèmes de détection et de protection incendie, ainsi que de vos fermetures industrielles.",
+    features: [
+      "Étude technique préalable",
+      "Installation conforme aux normes",
+      "Tests et mise en service",
+      "Formation du personnel",
+    ],
+    image: "/placeholder.svg?height=250&width=350",
+  },
+  {
+    icon: Wrench,
+    title: "RÉPARATION",
+    description:
+      "Un incident ou un dysfonctionnement ? Nous proposons un service de réparation rapide et efficace pour vos équipements. Grâce à notre expertise et à l'utilisation de pièces de qualité, nous intervenons pour remettre vos installations en parfait état.",
+    features: [
+      "Intervention d'urgence 24h/7j",
+      "Diagnostic précis",
+      "Pièces de rechange d'origine",
+      "Garantie sur les interventions",
+    ],
+    image: "/placeholder.svg?height=250&width=350",
+  },
+  {
+    icon: Shield,
+    title: "MAINTENANCE",
+    description:
+      "Pour assurer la performance et la longévité de vos systèmes, nous proposons des contrats de maintenance adaptés. Nos équipes effectuent des contrôles réguliers et des tests de performance pour prévenir les pannes.",
+    features: [
+      "Maintenance préventive programmée",
+      "Contrôles réglementaires",
+      "Rapport d'intervention détaillé",
+      "Support technique permanent",
+    ],
+    image: "/placeholder.svg?height=250&width=350",
+  },
+]
+
+export default function ServicesSection() {
+  return (
+    <section id="services" className="py-20 bg-white">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">Nos Services</h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Un accompagnement complet pour tous vos besoins en sécurité incendie et fermetures industrielles
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-3 gap-8 mb-16">
+          {services.map((service, index) => (
+            <Card
+              key={index}
+              className="group border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 overflow-hidden"
+            >
+              <div className="relative h-48 overflow-hidden">
+                <img
+                  src={service.image || "/placeholder.svg"}
+                  alt={service.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-30 transition-all duration-300" />
+                <div className="absolute top-4 left-4">
+                  <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center">
+                    <service.icon className="h-6 w-6 text-white" />
+                  </div>
+                </div>
+              </div>
+              <CardHeader>
+                <CardTitle className="text-xl font-bold text-gray-900 group-hover:text-red-600 transition-colors">
+                  {service.title}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-gray-600 leading-relaxed mb-4">{service.description}</CardDescription>
+
+                <div className="mb-6">
+                  <ul className="space-y-2">
+                    {service.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-center text-sm text-gray-600">
+                        <div className="w-2 h-2 bg-red-600 rounded-full mr-3 flex-shrink-0"></div>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <Button className="w-full bg-red-600 hover:bg-red-700 text-white">Demander un devis</Button>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {/* Process Section */}
+        <div className="bg-gray-50 rounded-2xl p-8">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-bold text-gray-900 mb-4">Notre Processus d'Intervention</h3>
+            <p className="text-lg text-gray-600">
+              Une méthodologie éprouvée pour garantir la qualité de nos interventions
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-4 gap-8">
+            {[
+              { step: "01", title: "Analyse", description: "Étude de vos besoins et diagnostic technique" },
+              { step: "02", title: "Proposition", description: "Devis détaillé et planning d'intervention" },
+              { step: "03", title: "Réalisation", description: "Intervention par nos équipes qualifiées" },
+              { step: "04", title: "Suivi", description: "Contrôle qualité et service après-vente" },
+            ].map((item, index) => (
+              <div key={index} className="text-center">
+                <div className="w-16 h-16 bg-red-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
+                  {item.step}
+                </div>
+                <h4 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h4>
+                <p className="text-gray-600">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
