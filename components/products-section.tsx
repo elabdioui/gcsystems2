@@ -1,39 +1,40 @@
 import { Shield, DoorOpenIcon as Door, DoorOpenIcon as Gate, Users, FenceIcon as Barrier } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 const categories = [
   {
     icon: Shield,
-    title: "DÉTECTION & PROTECTION INCENDIE",
+    title: "Détection et Protection Incendie",
     description:
       "Systèmes d'alarme (SSI), Robinets d'Incendie Armés (RIA), Surpresseurs d'incendie, Systèmes de désenfumage",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/protection incendi.avif?height=200&width=200",
   },
   {
     icon: Door,
-    title: "PORTES INDUSTRIELLES",
+    title: "Portes industrielles",
     description:
       "Portes sectionnelles, souples rapides, rideaux métalliques, portes coupe-feu, va-et-vient, à lanières",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/vavien.jpg?height=300&width=400",
   },
   {
     icon: Gate,
-    title: "PORTAILS INDUSTRIELS",
+    title: "Portails industriels",
     description: "Portails autoportants, battants, coulissants industriels avec automatismes de sécurité",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/portail.png?height=300&width=400",
   },
   {
     icon: Users,
-    title: "TOURNIQUETS & BARRIÈRES D'ACCÈS",
+    title: "Tourniquets et Barrières d'Accès",
     description: "Tourniquets de contrôle, sas d'hygiène, barrières levantes, bornes escamotables",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/tourniquet.jpg?height=300&width=400",
   },
   {
     icon: Barrier,
-    title: "BARRIÈRES DE PROTECTION",
+    title: "Barrières de Protection",
     description: "Barrières piétonnes, de circulation, protection de rayonnage, bornes et portiques de sécurité",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/barrieres-pietonnes.jpg?height=300&width=400",
   },
 ]
 
@@ -74,7 +75,9 @@ export default function ProductsSection() {
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-gray-600 leading-relaxed mb-4">{category.description}</CardDescription>
-                <Button className="w-full bg-red-600 hover:bg-red-700 text-white">Demander un devis</Button>
+                <Link href="#contact">
+                  <Button className="w-full bg-red-600 hover:bg-red-700 text-white">Demander un devis</Button>
+                </Link>
               </CardContent>
             </Card>
           ))}
@@ -106,7 +109,9 @@ export default function ProductsSection() {
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-gray-600 leading-relaxed mb-4">{category.description}</CardDescription>
-                <Button className="w-full bg-red-600 hover:bg-red-700 text-white">Demander un devis</Button>
+                <Link href="#contact">
+                  <Button className="w-full bg-red-600 hover:bg-red-700 text-white">Demander un devis</Button>
+                </Link>
               </CardContent>
             </Card>
           ))}

@@ -2,14 +2,14 @@ import { Card, CardContent } from "@/components/ui/card"
 
 // Placeholder logos - in a real implementation, these would be actual client logos
 const clients = [
-  { name: "Client 1", logo: "/placeholder.svg?height=80&width=160" },
-  { name: "Client 2", logo: "/placeholder.svg?height=80&width=160" },
-  { name: "Client 3", logo: "/placeholder.svg?height=80&width=160" },
-  { name: "Client 4", logo: "/placeholder.svg?height=80&width=160" },
-  { name: "Client 5", logo: "/placeholder.svg?height=80&width=160" },
-  { name: "Client 6", logo: "/placeholder.svg?height=80&width=160" },
-  { name: "Client 7", logo: "/placeholder.svg?height=80&width=160" },
-  { name: "Client 8", logo: "/placeholder.svg?height=80&width=160" },
+  { name: "Client 1", logo: "/basf.svg?height=80&width=160" },
+  { name: "Client 2", logo: "/cbre.svg?height=80&width=160" },
+  { name: "Client 3", logo: "/somfy.svg?height=80&width=160" },
+  { name: "Client 4", logo: "/dhl.svg?height=80&width=160" },
+  { name: "Client 5", logo: "/aria.svg?height=80&width=160" },
+  { name: "Client 6", logo: "/allianz.svg?height=80&width=160" },
+  { name: "Client 7", logo: "/cat.svg?height=80&width=160" },
+  { name: "Client 8", logo: "/mondelez.svg?height=80&width=160" },
 ]
 
 const stats = [

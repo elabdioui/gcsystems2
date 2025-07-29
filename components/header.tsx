@@ -9,12 +9,12 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const navigation = [
-    { name: "ACCUEIL", href: "#accueil" },
-    { name: "À PROPOS", href: "#apropos" },
-    { name: "PRODUITS", href: "#produits" },
-    { name: "SERVICES", href: "#services" },
-    { name: "RÉFÉRENCES", href: "#references" },
-    { name: "CONTACT", href: "#contact" },
+    { name: "Accueil", href: "#accueil" },
+    { name: "À propos", href: "#apropos" },
+    { name: "Produits", href: "#produits" },
+    { name: "Services", href: "#services" },
+    { name: "Références", href: "#references" },
+    { name: "Contact", href: "#contact" },
   ]
 
   return (
@@ -44,8 +44,7 @@ export default function Header() {
           <div className="flex justify-between items-center py-4">
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-2">
-              <div className="bg-red-600 text-white px-3 py-2 font-bold text-xl">GC</div>
-              <span className="text-2xl font-bold text-gray-900">SYSTEMS</span>
+              <img src="/placeholder-logo.png" alt="GcSystems" className="h-16 w-auto" />
             </Link>
 
             {/* Desktop Navigation */}
@@ -63,7 +62,9 @@ export default function Header() {
 
             {/* CTA Button */}
             <div className="hidden lg:block">
-              <Button className="bg-red-600 hover:bg-red-700 text-white">Demander un devis</Button>
+              <Link href="#contact">
+                <Button className="bg-red-600 hover:bg-red-700 text-white">Demander un devis</Button>
+              </Link>
             </div>
 
             {/* Mobile menu button */}

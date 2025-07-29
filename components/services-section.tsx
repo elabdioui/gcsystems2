@@ -1,11 +1,11 @@
 import { Wrench, Settings, Shield } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-
+import Link from "next/link"
 const services = [
   {
     icon: Settings,
-    title: "INSTALLATION",
+    title: "Installation",
     description:
       "La sécurité commence par une installation réalisée dans les règles de l'art. Nos experts qualifiés prennent en charge l'installation de vos systèmes de détection et de protection incendie, ainsi que de vos fermetures industrielles.",
     features: [
@@ -14,11 +14,11 @@ const services = [
       "Tests et mise en service",
       "Formation du personnel",
     ],
-    image: "/placeholder.svg?height=250&width=350",
+    image: "/bornes-portiques.jpg?height=250&width=350",
   },
   {
     icon: Wrench,
-    title: "RÉPARATION",
+    title: "Réparation",
     description:
       "Un incident ou un dysfonctionnement ? Nous proposons un service de réparation rapide et efficace pour vos équipements. Grâce à notre expertise et à l'utilisation de pièces de qualité, nous intervenons pour remettre vos installations en parfait état.",
     features: [
@@ -27,11 +27,11 @@ const services = [
       "Pièces de rechange d'origine",
       "Garantie sur les interventions",
     ],
-    image: "/placeholder.svg?height=250&width=350",
+    image: "/sectionnelles.jpg?height=250&width=350",
   },
   {
     icon: Shield,
-    title: "MAINTENANCE",
+    title: "Maintenance",
     description:
       "Pour assurer la performance et la longévité de vos systèmes, nous proposons des contrats de maintenance adaptés. Nos équipes effectuent des contrôles réguliers et des tests de performance pour prévenir les pannes.",
     features: [
@@ -40,7 +40,7 @@ const services = [
       "Rapport d'intervention détaillé",
       "Support technique permanent",
     ],
-    image: "/placeholder.svg?height=250&width=350",
+    image: "/Barriére-levante.jpg?height=250&width=350",
   },
 ]
 
@@ -92,8 +92,9 @@ export default function ServicesSection() {
                     ))}
                   </ul>
                 </div>
-
-                <Button className="w-full bg-red-600 hover:bg-red-700 text-white">Demander un devis</Button>
+                <Link href="#contact">
+                  <Button className="w-full bg-red-600 hover:bg-red-700 text-white">Demander un devis</Button>
+                </Link>
               </CardContent>
             </Card>
           ))}

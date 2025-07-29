@@ -8,17 +8,17 @@ const slides = [
   {
     title: "La protection qui fait la différence",
     subtitle: "Expert en incendie et fermetures",
-    image: "/placeholder.svg?height=600&width=1200",
+    image: "/desenfrumage.jpg?height=600&width=1200",
   },
   {
     title: "Prévention, Protection, Performance",
     subtitle: "Sécurité incendie et fermetures industrielles sur mesure",
-    image: "/placeholder.svg?height=600&width=1200",
+    image: "/porte-rapide.jpg?height=600&width=1200",
   },
   {
     title: "Sécuriser aujourd'hui, protéger demain",
     subtitle: "Incendie & Fermetures par GC SYSTEMS",
-    image: "/placeholder.svg?height=600&width=1200",
+    image: "/RIA_LE_upscale_balanced_x4.jpg?height=600&width=1200",
   },
 ]
 
