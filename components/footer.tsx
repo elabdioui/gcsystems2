@@ -8,10 +8,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="bg-red-600 text-white px-3 py-2 font-bold text-xl">GC</div>
-              <span className="text-2xl font-bold">SYSTEMS</span>
-            </div>
+            <img src="/placeholder-logo.png?width=200&length=200" alt="GC Systems" />
             <p className="text-gray-400 mb-4">Expert en protection incendie et fermetures industrielles au Maroc.</p>
             <div className="flex space-x-4">
               <Facebook className="h-5 w-5 text-gray-400 hover:text-white cursor-pointer" />

@@ -1,8 +1,8 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
+import emailjs from '@emailjs/browser'
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -17,11 +17,57 @@ export default function ContactSection() {
     societe: "",
     message: "",
   })
+  const [isLoading, setIsLoading] = useState(false)
+  const [status, setStatus] = useState<{ type: 'success' | 'error' | null; message: string }>({
+    type: null,
+    message: ''
+  })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission here
-    console.log("Form submitted:", formData)
+    setIsLoading(true)
+    setStatus({ type: null, message: '' })
+
+    try {
+      // Configuration EmailJS
+      const serviceId = 'YOUR_SERVICE_ID' // Remplacez par votre Service ID
+      const templateId = 'YOUR_TEMPLATE_ID' // Remplacez par votre Template ID
+      const publicKey = 'YOUR_PUBLIC_KEY' // Remplacez par votre Public Key
+
+      const templateParams = {
+        to_email: 'elabdiouihaitham@gmail.com',
+        from_name: formData.nom,
+        from_email: formData.email,
+        phone: formData.telephone,
+        company: formData.societe,
+        message: formData.message,
+        subject: `Nouvelle demande de devis - ${formData.societe || formData.nom}`
+      }
+
+      await emailjs.send(serviceId, templateId, templateParams, publicKey)
+      
+      setStatus({
+        type: 'success',
+        message: 'Votre demande a été envoyée avec succès ! Nous vous recontacterons rapidement.'
+      })
+      
+      // Reset form
+      setFormData({
+        nom: "",
+        email: "",
+        telephone: "",
+        societe: "",
+        message: "",
+      })
+    } catch (error) {
+      console.error('Erreur:', error)
+      setStatus({
+        type: 'error',
+        message: 'Une erreur est survenue. Veuillez réessayer ou nous contacter directement.'
+      })
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -127,6 +173,17 @@ export default function ContactSection() {
               </CardTitle>
             </CardHeader>
             <CardContent className="p-6">
+              {/* Status Message */}
+              {status.type && (
+                <div className={`mb-6 p-4 rounded-lg ${
+                  status.type === 'success' 
+                    ? 'bg-green-50 text-green-800 border border-green-200' 
+                    : 'bg-red-50 text-red-800 border border-red-200'
+                }`}>
+                  {status.message}
+                </div>
+              )}
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
@@ -208,9 +265,22 @@ export default function ContactSection() {
                   />
                 </div>
 
-                <Button type="submit" className="w-full bg-red-600 hover:bg-red-700 text-white text-lg py-3">
-                  <Send className="mr-2 h-5 w-5" />
-                  Envoyer la demande
+                <Button 
+                  type="submit" 
+                  disabled={isLoading}
+                  className="w-full bg-red-600 hover:bg-red-700 disabled:bg-gray-400 text-white text-lg py-3"
+                >
+                  {isLoading ? (
+                    <>
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                      Envoi en cours...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="mr-2 h-5 w-5" />
+                      Envoyer la demande
+                    </>
+                  )}
                 </Button>
               </form>
             </CardContent>
@@ -225,12 +295,17 @@ export default function ContactSection() {
           </div>
 
           <div className="max-w-4xl mx-auto">
-            <div className="bg-gray-300 h-96 rounded-lg flex items-center justify-center">
-              <div className="text-center text-gray-600">
-                <MapPin className="h-12 w-12 mx-auto mb-4" />
-                <p className="text-lg font-medium">Carte Google Maps</p>
-                <p className="text-sm">13 Rue Ahmed El Majjati, Maarif, Casablanca</p>
-              </div>
+            <div className="rounded-lg overflow-hidden shadow-lg">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.8445182449647!2d-7.6262!3d33.5731!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7d2da31e0a2d3%3A0x5b0b0b0b0b0b0b0b!2s13%20Rue%20Ahmed%20El%20Majjati%2C%20Casablanca%2C%20Morocco!5e0!3m2!1sen!2sus!4v1640995200000!5m2!1sen!2sus"
+                width="100%"
+                height="400"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full h-96"
+              />
             </div>
           </div>
         </div>

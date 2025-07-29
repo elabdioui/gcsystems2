@@ -109,21 +109,43 @@ export default function ServicesSection() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-8">
-            {[
-              { step: "01", title: "Analyse", description: "Étude de vos besoins et diagnostic technique" },
-              { step: "02", title: "Proposition", description: "Devis détaillé et planning d'intervention" },
-              { step: "03", title: "Réalisation", description: "Intervention par nos équipes qualifiées" },
-              { step: "04", title: "Suivi", description: "Contrôle qualité et service après-vente" },
-            ].map((item, index) => (
-              <div key={index} className="text-center">
-                <div className="w-16 h-16 bg-red-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
-                  {item.step}
+          <div className="relative">
+            {/* Timeline line simple */}
+            <div className="hidden md:block absolute top-8 left-0 right-0 h-px bg-gray-300"></div>
+            
+            <div className="grid md:grid-cols-4 gap-8 relative">
+              {[
+                { step: "01", title: "Analyse", description: "Étude de vos besoins et diagnostic technique" },
+                { step: "02", title: "Proposition", description: "Devis détaillé et planning d'intervention" },
+                { step: "03", title: "Réalisation", description: "Intervention par nos équipes qualifiées" },
+                { step: "04", title: "Suivi", description: "Contrôle qualité et service après-vente" },
+              ].map((item, index) => (
+                <div key={index} className="text-center group relative">
+                  
+                  {/* Circle avec couleurs inversées */}
+                  <div className="relative w-16 h-16 bg-red-600 text-white rounded-full flex items-center justify-center font-semibold mx-auto mb-4 transition-all duration-300 group-hover:bg-gray-800 group-hover:shadow-lg z-10">
+                    {item.step}
+                  </div>
+                  
+                  {/* Contenu */}
+                  <div className="transition-all duration-300 group-hover:-translate-y-1">
+                    <h4 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-red-600 transition-colors duration-300">
+                      {item.title}
+                    </h4>
+                    <p className="text-gray-600 leading-relaxed text-sm">
+                      {item.description}
+                    </p>
+                  </div>
+                  
+                  {/* Ligne verticale mobile */}
+                  {index < 3 && (
+                    <div className="md:hidden flex justify-center mt-6 mb-6">
+                      <div className="w-px h-12 bg-gray-300"></div>
+                    </div>
+                  )}
                 </div>
-                <h4 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h4>
-                <p className="text-gray-600">{item.description}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
