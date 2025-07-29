@@ -4,25 +4,25 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 const engagements = [
   {
     icon: Shield,
-    title: "QUALITÉ",
+    title: "Qualité",
     description:
       "Chez GC SYSTEMS, la qualité est au cœur de tout ce que nous faisons. Nous nous engageons à fournir des prestations et des produits répondant aux plus hauts standards de qualité.",
   },
   {
     icon: Users,
-    title: "SATISFACTION",
+    title: "Satisfaction",
     description:
       "Votre satisfaction est notre priorité absolue. Nous sommes à l'écoute de vos besoins et adaptons nos solutions pour répondre parfaitement à vos attentes.",
   },
   {
     icon: Clock,
-    title: "RÉACTIVITÉ",
+    title: "Réactivité",
     description:
       "Nos équipes sont disponibles pour répondre à vos demandes dans les plus brefs délais, en vous apportant des réponses claires et des solutions rapides.",
   },
   {
     icon: Lock,
-    title: "SÉCURITÉ",
+    title: "Sécurité",
     description:
       "La sécurité de vos données et de nos services est primordiale. Nous mettons en place des protocoles de sécurité avancés pour protéger vos informations.",
   },
@@ -50,11 +50,16 @@ export default function AboutSection() {
             </div>
           </div>
           <div>
-            <img
-              src="/placeholder.svg?height=400&width=600"
-              alt="Équipe GC SYSTEMS"
+            <video
+              src="/VIDEO GC SYSTEMS.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
               className="rounded-lg shadow-lg w-full"
-            />
+            >
+              Votre navigateur ne supporte pas la lecture de vidéos.
+            </video>
           </div>
         </div>
 
