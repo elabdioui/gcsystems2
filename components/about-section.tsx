@@ -1,9 +1,9 @@
-import { Shield, Users, Clock, Lock } from "lucide-react"
+import { ShieldCheck, Users, Clock, Lock , } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 const engagements = [
   {
-    icon: Shield,
+    icon: ShieldCheck,
     title: "Qualité",
     description:
       "Chez GC SYSTEMS, la qualité est au cœur de tout ce que nous faisons. Nous nous engageons à fournir des prestations et des produits répondant aux plus hauts standards de qualité.",

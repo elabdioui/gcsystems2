@@ -1,4 +1,4 @@
-import { Shield, DoorOpenIcon as Door, DoorOpenIcon as Gate, Users, FenceIcon as Barrier } from "lucide-react"
+import { Shield, DoorClosed  as Door, DoorOpenIcon as Gate, Users, FenceIcon as Barrier } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"

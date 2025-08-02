@@ -154,7 +154,7 @@ export default function ReferencesSection() {
                   <img
                     src={client.logo || "/placeholder.svg"}
                     alt={client.name}
-                    className="w-full h-20 object-contain grayscale group-hover:grayscale-0 transition-all duration-300 filter brightness-75 group-hover:brightness-100 group-hover:scale-110"
+                    className="w-full h-20 object-contain transition-all duration-300 group-hover:scale-110"
                   />
                 </CardContent>
               </Card>

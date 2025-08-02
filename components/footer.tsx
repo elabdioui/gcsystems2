@@ -4,98 +4,61 @@ import { Phone, Mail, MapPin, Facebook, Linkedin, Instagram } from "lucide-react
 export default function Footer() {
   return (
     <footer className="bg-gray-900 text-white">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid md:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <div>
-            <img src="/placeholder-logo.png?width=200&length=200" alt="GC Systems" />
-            <p className="text-gray-400 mb-4">Expert en protection incendie et fermetures industrielles au Maroc.</p>
-            <div className="flex space-x-4">
-              <Facebook className="h-5 w-5 text-gray-400 hover:text-white cursor-pointer" />
-              <Linkedin className="h-5 w-5 text-gray-400 hover:text-white cursor-pointer" />
-              <Instagram className="h-5 w-5 text-gray-400 hover:text-white cursor-pointer" />
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-6">
+          
+          {/* Logo et réseaux sociaux */}
+          <div className="text-center md:text-left">
+            <Link href="/" className="inline-block mb-3 group">
+              <img 
+                src="/placeholder-logo.png" 
+                alt="GC SYSTEMS" 
+                className="h-10 w-auto group-hover:scale-105 transition-transform duration-300" 
+              />
+            </Link>
+            <p className="text-gray-400 text-xs mb-3 max-w-xs">
+              Expert en protection incendie et fermetures industrielles au Maroc.
+            </p>
+            <div className="flex justify-center md:justify-start space-x-3">
+              <Link href="#" className="text-gray-400 hover:text-red-400 transition-colors duration-300">
+                <Facebook className="h-4 w-4" />
+              </Link>
+              <Link href="#" className="text-gray-400 hover:text-red-400 transition-colors duration-300">
+                <Linkedin className="h-4 w-4" />
+              </Link>
+              <Link href="#" className="text-gray-400 hover:text-red-400 transition-colors duration-300">
+                <Instagram className="h-4 w-4" />
+              </Link>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Liens Rapides</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/" className="text-gray-400 hover:text-white">
-                  Accueil
-                </Link>
-              </li>
-              <li>
-                <Link href="/notre-societe" className="text-gray-400 hover:text-white">
-                  Notre Société
-                </Link>
-              </li>
-              <li>
-                <Link href="/nos-produits" className="text-gray-400 hover:text-white">
-                  Nos Produits
-                </Link>
-              </li>
-              <li>
-                <Link href="/nos-services" className="text-gray-400 hover:text-white">
-                  Nos Services
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-gray-400 hover:text-white">
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Services */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Nos Services</h3>
-            <ul className="space-y-2">
-              <li>
-                <span className="text-gray-400">Installation</span>
-              </li>
-              <li>
-                <span className="text-gray-400">Maintenance</span>
-              </li>
-              <li>
-                <span className="text-gray-400">Réparation</span>
-              </li>
-              <li>
-                <span className="text-gray-400">Dépannage 24h/7j</span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact Info */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Contact</h3>
-            <div className="space-y-3">
-              <div className="flex items-center space-x-3">
-                <Phone className="h-4 w-4 text-red-600" />
-                <span className="text-gray-400">+212 639 737 400</span>
+          {/* Contact compact */}
+          <div className="text-center md:text-right">
+            <div className="flex flex-col md:items-end space-y-1">
+              <div className="flex items-center justify-center md:justify-end space-x-2">
+                <Phone className="h-3 w-3 text-red-600" />
+                <span className="text-gray-300 text-xs">+212 639 737 400</span>
               </div>
-              <div className="flex items-center space-x-3">
-                <Mail className="h-4 w-4 text-red-600" />
-                <span className="text-gray-400">sales@gcsystems.ma</span>
+              <div className="flex items-center justify-center md:justify-end space-x-2">
+                <Mail className="h-3 w-3 text-red-600" />
+                <span className="text-gray-300 text-xs">sales@gcsystems.ma</span>
               </div>
-              <div className="flex items-start space-x-3">
-                <MapPin className="h-4 w-4 text-red-600 mt-1" />
-                <span className="text-gray-400">
-                  13 Rue Ahmed El Majjati
-                  <br />
-                  Résidence Les Alpes - 1er étage - n°8
-                  <br />
-                  Maarif, CASABLANCA
+              <div className="flex items-start justify-center md:justify-end space-x-2">
+                <MapPin className="h-3 w-3 text-red-600 mt-0.5 flex-shrink-0" />
+                <span className="text-gray-300 text-xs text-center md:text-right leading-tight">
+                  13 Rue Ahmed El Majjati, Résidence Les Alpes<br />
+                  1er étage - n°8, Maarif, CASABLANCA
                 </span>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center">
-          <p className="text-gray-400">© {new Date().getFullYear()} GC SYSTEMS. Tous droits réservés.</p>
+        {/* Copyright très compact */}
+        <div className="border-t border-gray-700 mt-6 pt-4 text-center">
+          <p className="text-gray-500 text-xs">
+            © {new Date().getFullYear()} GC SYSTEMS. Tous droits réservés.
+          </p>
         </div>
       </div>
     </footer>

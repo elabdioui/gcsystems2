@@ -9,6 +9,11 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
+// Remplacez ces valeurs par vos vraies clés EmailJS
+const EMAILJS_SERVICE_ID = "service_4ye5xn7"
+const EMAILJS_TEMPLATE_ID = "template_474786h"
+const EMAILJS_PUBLIC_KEY = "hhE0v__Y0x38n_ETR"
+
 export default function ContactSection() {
   const [formData, setFormData] = useState({
     nom: "",
@@ -29,11 +34,6 @@ export default function ContactSection() {
     setStatus({ type: null, message: '' })
 
     try {
-      // Configuration EmailJS
-      const serviceId = 'YOUR_SERVICE_ID' // Remplacez par votre Service ID
-      const templateId = 'YOUR_TEMPLATE_ID' // Remplacez par votre Template ID
-      const publicKey = 'YOUR_PUBLIC_KEY' // Remplacez par votre Public Key
-
       const templateParams = {
         to_email: 'elabdiouihaitham@gmail.com',
         from_name: formData.nom,
@@ -44,7 +44,12 @@ export default function ContactSection() {
         subject: `Nouvelle demande de devis - ${formData.societe || formData.nom}`
       }
 
-      await emailjs.send(serviceId, templateId, templateParams, publicKey)
+      await emailjs.send(
+        EMAILJS_SERVICE_ID, 
+        EMAILJS_TEMPLATE_ID, 
+        templateParams, 
+        EMAILJS_PUBLIC_KEY
+      )
       
       setStatus({
         type: 'success',
@@ -60,7 +65,7 @@ export default function ContactSection() {
         message: "",
       })
     } catch (error) {
-      console.error('Erreur:', error)
+      console.error('Erreur EmailJS:', error)
       setStatus({
         type: 'error',
         message: 'Une erreur est survenue. Veuillez réessayer ou nous contacter directement.'
