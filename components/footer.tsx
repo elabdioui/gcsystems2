@@ -20,15 +20,11 @@ export default function Footer() {
               Expert en protection incendie et fermetures industrielles au Maroc.
             </p>
             <div className="flex justify-center md:justify-start space-x-3">
-              <Link href="#" className="text-gray-400 hover:text-red-400 transition-colors duration-300">
-                <Facebook className="h-4 w-4" />
-              </Link>
-              <Link href="#" className="text-gray-400 hover:text-red-400 transition-colors duration-300">
+              
+              <Link href="https://www.linkedin.com/company/gc-systems/posts/?feedView=all" className="text-gray-400 hover:text-red-400 transition-colors duration-300">
                 <Linkedin className="h-4 w-4" />
               </Link>
-              <Link href="#" className="text-gray-400 hover:text-red-400 transition-colors duration-300">
-                <Instagram className="h-4 w-4" />
-              </Link>
+              
             </div>
           </div>
 
