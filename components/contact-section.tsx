@@ -35,7 +35,7 @@ export default function ContactSection() {
 
     try {
       const templateParams = {
-        to_email: 'amine@gcsystems.ma',
+        to_email: 'elabdiouihaitham@gmail.com',
         from_name: formData.nom,
         from_email: formData.email,
         phone: formData.telephone,
