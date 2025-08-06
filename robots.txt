@@ -1,0 +1,34 @@
+# Robots.txt pour GC SYSTEMS - Protection Incendie Maroc
+User-agent: *
+Allow: /
+
+# Bloquer les dossiers techniques
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /.well-known/
+
+# Autoriser spécifiquement les images et CSS
+Allow: /images/
+Allow: /*.css
+Allow: /*.js
+
+# Sitemap
+Sitemap: https://gcsystems.ma/sitemap.xml
+
+# Spécifique pour Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Spécifique pour Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Bloquer les mauvais bots
+User-agent: BadBot
+Disallow: /
+
+User-agent: spam-bot
+Disallow: /

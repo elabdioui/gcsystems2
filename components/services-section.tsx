@@ -2,6 +2,7 @@ import { Wrench, Settings, Shield } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+
 const services = [
   {
     icon: Settings,
@@ -14,7 +15,7 @@ const services = [
       "Tests et mise en service",
       "Formation du personnel",
     ],
-    image: "/bornes-portiques.jpg?height=250&width=350",
+    image: "/installation.jpg",
   },
   {
     icon: Wrench,
@@ -27,7 +28,7 @@ const services = [
       "Pièces de rechange d'origine",
       "Garantie sur les interventions",
     ],
-    image: "/sectionnelles.jpg?height=250&width=350",
+    image: "/reparation.jpg",
   },
   {
     icon: Shield,
@@ -40,7 +41,7 @@ const services = [
       "Rapport d'intervention détaillé",
       "Support technique permanent",
     ],
-    image: "/Barriére-levante.jpg?height=250&width=350",
+    image: "/maintenance.jpg",
   },
 ]
 
@@ -61,15 +62,15 @@ export default function ServicesSection() {
               key={index}
               className="group border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 overflow-hidden"
             >
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-64 overflow-hidden bg-gray-50">
                 <img
                   src={service.image || "/placeholder.svg"}
                   alt={service.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-30 transition-all duration-300" />
+                
                 <div className="absolute top-4 left-4">
-                  <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center">
+                  <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center shadow-lg">
                     <service.icon className="h-6 w-6 text-white" />
                   </div>
                 </div>

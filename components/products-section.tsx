@@ -16,7 +16,7 @@ const categories = [
     title: "Portes industrielles",
     description:
       "Portes sectionnelles, souples rapides, rideaux métalliques, portes coupe-feu, va-et-vient, à lanières",
-    image: "/vavien.jpg?height=300&width=400",
+    image: "/porte industrielle.jpg?height=300&width=400",
   },
   {
     icon: Gate,
@@ -28,13 +28,13 @@ const categories = [
     icon: Users,
     title: "Tourniquets et Barrières d'Accès",
     description: "Tourniquets de contrôle, sas d'hygiène, barrières levantes, bornes escamotables",
-    image: "/tourniquet.jpg?height=300&width=400",
+    image: "/TOURNIQUET ET BARRIERES D'ACCES.jpg?height=100&width=100",
   },
   {
     icon: Barrier,
     title: "Barrières de Protection",
     description: "Barrières piétonnes, de circulation, protection de rayonnage, bornes et portiques de sécurité",
-    image: "/barrieres-pietonnes.jpg?height=300&width=400",
+    image: "/barrieres-pietonnes.jpg?height=100&width=100",
   },
 ]
 
@@ -61,7 +61,7 @@ export default function ProductsSection() {
                   alt={category.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-30 transition-all duration-300" />
+               
                 <div className="absolute top-4 left-4">
                   <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center">
                     <category.icon className="h-6 w-6 text-white" />
@@ -95,7 +95,7 @@ export default function ProductsSection() {
                   alt={category.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-30 transition-all duration-300" />
+                
                 <div className="absolute top-4 left-4">
                   <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center">
                     <category.icon className="h-6 w-6 text-white" />
