@@ -9,7 +9,7 @@ const categories = [
     title: "Détection et Protection Incendie",
     description:
       "Systèmes d'alarme (SSI), Robinets d'Incendie Armés (RIA), Surpresseurs d'incendie, Systèmes de désenfumage",
-    image: "/protection incendi.avif?height=200&width=200",
+    image: "/detection.jpg?height=200&width=200",
   },
   {
     icon: Door,
