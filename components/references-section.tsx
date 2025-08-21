@@ -26,7 +26,7 @@ const testimonials = [
 	{
 		quote:
 			"GC SYSTEMS a installé notre système de protection incendie avec un professionnalisme exemplaire. Leur équipe est réactive et compétente.",
-		author: "Ahmed Benali",
+		author: "Ahmed ",
 		company: "Directeur Technique, Industrie Pharmaceutique",
 	},
 	{
@@ -38,7 +38,7 @@ const testimonials = [
 	{
 		quote:
 			"Installation conforme aux normes et dans les délais. Je recommande vivement leurs services pour tous projets de sécurité incendie.",
-		author: "Mohamed Alami",
+		author: "Mohamed",
 		company: "Chef de Projet, Groupe Industriel",
 	},
 ]

@@ -10,9 +10,9 @@ import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 // Remplacez ces valeurs par vos vraies clés EmailJS
-const EMAILJS_SERVICE_ID = "service_4ye5xn7"
-const EMAILJS_TEMPLATE_ID = "template_474786h"
-const EMAILJS_PUBLIC_KEY = "hhE0v__Y0x38n_ETR"
+const EMAILJS_SERVICE_ID = "service_hzxdlpn"
+const EMAILJS_TEMPLATE_ID = "template_wuojl8p"
+const EMAILJS_PUBLIC_KEY = "i92UU9uAy6FOoQBsf"
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -35,7 +35,7 @@ export default function ContactSection() {
 
     try {
       const templateParams = {
-        to_email: 'elabdiouihaitham@gmail.com',
+        to_email: 'amine.gcsystems@gmail.com',
         from_name: formData.nom,
         from_email: formData.email,
         phone: formData.telephone,
@@ -157,14 +157,35 @@ export default function ContactSection() {
             <div className="space-y-4">
               <h4 className="text-lg font-semibold text-gray-900">Contact Rapide</h4>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button className="bg-green-600 hover:bg-green-700 text-white flex-1">
-                  <Phone className="mr-2 h-4 w-4" />
-                  WhatsApp
-                </Button>
-                <Button variant="outline" className="flex-1 bg-transparent">
-                  <Phone className="mr-2 h-4 w-4" />
-                  Rappel gratuit
-                </Button>
+                <a 
+                  href="https://wa.me/212639737400" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex-1"
+                >
+                  <Button 
+                    className="bg-green-600 hover:bg-green-700 text-white w-full"
+                    type="button"
+                  >
+                    <Phone className="mr-2 h-4 w-4" />
+                    WhatsApp
+                  </Button>
+                </a>
+                <a 
+                  href="mailto:sales@gcsystems.ma" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex-1"
+                >
+                  <Button 
+                    variant="outline" 
+                    className="bg-transparent w-full"
+                    type="button"
+                  >
+                    <Mail className="mr-2 h-4 w-4" />
+                    Email
+                  </Button>
+                </a>
               </div>
             </div>
           </div>
