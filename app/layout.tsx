@@ -1,17 +1,62 @@
-import type React from "react"
+import type { ReactNode } from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
+import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import "./globals.css"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
-import { Analytics } from "@vercel/analytics/next"
 
-const inter = Inter({ subsets: ["latin"] })
+// Optimiser le chargement des polices pour éviter CLS
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+})
 
 export const metadata: Metadata = {
-   metadataBase: new URL('https://gcsystems.ma'),
+  metadataBase: new URL('https://gcsystems.ma'),
   title: "GC SYSTEMS - Protection Incendie & Fermetures Industrielles au Maroc | Amine Ghaimy",
   description: "Expert en protection incendie et fermetures industrielles au Maroc. Installation, maintenance et dépannage de systèmes de sécurité par Amine Ghaimy - GC SYSTEMS. Casablanca, Maroc.",
+  alternates: {
+    canonical: 'https://gcsystems.ma',
+    languages: {
+      'fr-MA': 'https://gcsystems.ma',
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'fr_MA',
+    url: 'https://gcsystems.ma',
+    siteName: 'GC SYSTEMS',
+    title: 'GC SYSTEMS - Protection Incendie & Fermetures Industrielles Maroc',
+    description: 'Expert en protection incendie et fermetures industrielles au Maroc par Amine Ghaimy. Installation, maintenance et dépannage de systèmes de sécurité.',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'GC SYSTEMS - Protection Incendie Maroc - Amine Ghaimy',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'GC SYSTEMS - Protection Incendie Maroc',
+    description: 'Expert en protection incendie et fermetures industrielles au Maroc par Amine Ghaimy.',
+    images: ['/og-image.jpg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   keywords: [
     // Mots-clés principaux
     "protection incendie Maroc",
@@ -124,59 +169,22 @@ export const metadata: Metadata = {
     "société maintenance incendie Casablanca"
   ],
   authors: [{ name: "Amine Ghaimy", url: "https://gcsystems.ma" }],
-  creator: "Haitham El Abdiouhi", // Vous en tant que développeur
+  creator: "Haitham El Abdioui", // Vous en tant que développeur
   publisher: "GC SYSTEMS - Amine Ghaimy",
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  openGraph: {
-    type: 'website',
-    locale: 'fr_MA',
-    url: 'https://gcsystems.ma',
-    siteName: 'GC SYSTEMS',
-    title: 'GC SYSTEMS - Protection Incendie & Fermetures Industrielles Maroc',
-    description: 'Expert en protection incendie et fermetures industrielles au Maroc par Amine Ghaimy. Installation, maintenance et dépannage de systèmes de sécurité.',
-    images: [
-      {
-        url: '/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'GC SYSTEMS - Protection Incendie Maroc - Amine Ghaimy',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'GC SYSTEMS - Protection Incendie Maroc',
-    description: 'Expert en protection incendie et fermetures industrielles au Maroc par Amine Ghaimy.',
-    images: ['/og-image.jpg'],
-  },
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon.ico',
     apple: '/apple-touch-icon.png',
   },
   manifest: '/site.webmanifest',
-  alternates: {
-    canonical: 'https://gcsystems.ma',
-  },
-  
 }
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: ReactNode
 }) {
-  return (
+ return (
     <html lang="fr">
       <head>
         <meta name="geo.region" content="MA-06" />
@@ -192,6 +200,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )

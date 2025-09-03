@@ -3,22 +3,23 @@
 import { useState, useEffect } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import NextImage from "next/image" // Renommé pour éviter la confusion
 
 const slides = [
   {
     title: "La protection qui fait la différence",
     subtitle: "Expert en incendie et fermetures",
-    image: "/desenfrumage.jpg?height=600&width=1200",
+    image: "/desenfrumage.jpg",
   },
   {
     title: "Prévention, Protection, Performance",
     subtitle: "Sécurité incendie et fermetures industrielles sur mesure",
-    image: "/porte-rapide.jpg?height=600&width=1200",
+    image: "/porte-rapide.jpg",
   },
   {
     title: "Sécuriser aujourd'hui, protéger demain",
     subtitle: "Incendie & Fermetures par GC SYSTEMS",
-    image: "/RIA_LE_upscale_balanced_x4.jpg?height=600&width=1200",
+    image: "/RIA_LE_upscale_balanced_x4.jpg",
   },
 ]
 
@@ -49,7 +50,17 @@ export default function HeroSlider() {
             index === currentSlide ? "opacity-100" : "opacity-0"
           }`}
         >
-          <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${slide.image})` }} />
+          <div className="absolute inset-0">
+            <NextImage
+              src={slide.image}
+              alt={slide.title}
+              fill
+              priority={index === 0}
+              className="object-cover"
+              sizes="100vw"
+              quality={85}
+            />
+          </div>
           <div className="absolute inset-0 bg-black bg-opacity-50" />
           <div className="relative container mx-auto px-4 h-full flex items-center">
             <div className="text-white max-w-2xl">
