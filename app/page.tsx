@@ -14,8 +14,8 @@ export default function Home() {
       
       <HeroSlider />
       <AboutSection />
-      <ServicesSection />
       <ProductsSection />
+      <ServicesSection />
       <RefersSection />
       <ContactSection />
     </main>
