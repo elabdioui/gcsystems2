@@ -2,6 +2,7 @@ import { Wrench, Settings, Shield } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { useState, useEffect, useRef } from "react"
 
 const services = [
   {
@@ -45,56 +46,118 @@ const services = [
   },
 ]
 
+// Hook for intersection observer
+function useIntersectionObserver(options = {}) {
+  const [isVisible, setIsVisible] = useState(false)
+  const ref = useRef(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsVisible(entry.isIntersecting)
+    }, { threshold: 0.1, ...options })
+
+    if (ref.current) {
+      observer.observe(ref.current)
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current)
+      }
+    }
+  }, [])
+
+  return [ref, isVisible]
+}
+
 export default function ServicesSection() {
+  const [titleRef, titleVisible] = useIntersectionObserver()
+  const [cardsRef, cardsVisible] = useIntersectionObserver()
+  const [processRef, processVisible] = useIntersectionObserver()
+
   return (
-    <section id="services" className="py-20 bg-white">
+    <section id="services" className="py-24 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-1/4 right-0 w-72 h-72 bg-red-50 rounded-full translate-x-36 opacity-60"></div>
+      <div className="absolute bottom-1/4 left-0 w-72 h-72 bg-red-50 rounded-full -translate-x-36 opacity-60"></div>
+      
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Nos Services</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+        <div ref={titleRef} className={`text-center mb-20 fade-in-on-scroll ${titleVisible ? 'visible' : ''}`}>
+          <div className="inline-block px-4 py-2 bg-red-50 rounded-full border border-red-100 mb-6">
+            <span className="text-red-600 text-sm font-medium">Nos expertises</span>
+          </div>
+          <h2 className="text-5xl font-bold text-gray-900 mb-6">
+            Nos <span className="gradient-text">Services</span>
+          </h2>
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
             Un accompagnement complet pour tous vos besoins en sécurité incendie et fermetures industrielles
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8 mb-16">
+        <div ref={cardsRef} className={`grid lg:grid-cols-3 gap-10 mb-20 fade-in-on-scroll ${cardsVisible ? 'visible' : ''}`}>
           {services.map((service, index) => (
             <Card
               key={index}
-              className="group border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 overflow-hidden"
+              className="group border-0 shadow-lg hover:shadow-2xl card-hover overflow-hidden bg-white relative"
             >
-              <div className="relative h-64 overflow-hidden bg-gray-50">
+              <div className="relative h-72 overflow-hidden">
                 <img
                   src={service.image || "/placeholder.svg"}
                   alt={service.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 
-                <div className="absolute top-4 left-4">
-                  <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center shadow-lg">
+                {/* Enhanced overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                
+                {/* Service number */}
+                <div className="absolute top-6 right-6">
+                  <div className="w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-red-600 font-bold text-lg shadow-lg">
+                    {index + 1}
+                  </div>
+                </div>
+                
+                {/* Icon with enhanced styling */}
+                <div className="absolute bottom-6 left-6">
+                  <div className="w-16 h-16 bg-white/90 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                     <service.icon className="h-6 w-6 text-white" />
                   </div>
                 </div>
+                
+                {/* Service title overlay */}
+                <div className="absolute bottom-6 right-6 left-24">
+                  <h3 className="text-white font-bold text-xl">{service.title}</h3>
+                </div>
               </div>
-              <CardHeader>
-                <CardTitle className="text-xl font-bold text-gray-900 group-hover:text-red-600 transition-colors">
+              
+              <CardHeader className="p-8">
+                <CardTitle className="text-2xl font-bold text-gray-900 group-hover:text-red-600 transition-colors duration-300 mb-4">
                   {service.title}
                 </CardTitle>
               </CardHeader>
-              <CardContent>
-                <CardDescription className="text-gray-600 leading-relaxed mb-4">{service.description}</CardDescription>
+              
+              <CardContent className="px-8 pb-8">
+                <CardDescription className="text-gray-600 leading-relaxed mb-6 text-base">
+                  {service.description}
+                </CardDescription>
 
-                <div className="mb-6">
+                {/* Enhanced features list */}
+                <div className="mb-8">
+                  <h4 className="font-semibold text-gray-900 mb-4 text-lg">Nos prestations :</h4>
                   <ul className="space-y-2">
                     {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center text-sm text-gray-600">
-                        <div className="w-2 h-2 bg-red-600 rounded-full mr-3 flex-shrink-0"></div>
+                      <li key={featureIndex} className="flex items-center text-base text-gray-600 group/item hover:text-red-600 transition-colors duration-200">
+                        <div className="w-3 h-3 bg-red-600 rounded-full mr-4 flex-shrink-0 group-hover/item:scale-125 transition-transform duration-200"></div>
                         {feature}
                       </li>
                     ))}
                   </ul>
                 </div>
+                
                 <Link href="#contact">
-                  <Button className="w-full bg-red-600 hover:bg-red-700 text-white">Demander un devis</Button>
+                  <Button className="w-full btn-primary-enhanced hover-glow text-white py-3 text-base font-medium">
+                    Demander un devis
+                  </Button>
                 </Link>
               </CardContent>
             </Card>
@@ -102,50 +165,73 @@ export default function ServicesSection() {
         </div>
 
         {/* Process Section */}
-        <div className="bg-gray-50 rounded-2xl p-8">
-          <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-gray-900 mb-4">Notre Processus d'Intervention</h3>
-            <p className="text-lg text-gray-600">
+        <div ref={processRef} className={`bg-white rounded-3xl p-12 shadow-xl border border-gray-100 fade-in-on-scroll ${processVisible ? 'visible' : ''}`}>
+          <div className="text-center mb-16">
+            <div className="inline-block px-4 py-2 bg-red-50 rounded-full border border-red-100 mb-6">
+              <span className="text-red-600 text-sm font-medium">Notre méthode</span>
+            </div>
+            <h3 className="text-4xl font-bold text-gray-900 mb-6">
+              Notre Processus <span className="gradient-text">d'Intervention</span>
+            </h3>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Une méthodologie éprouvée pour garantir la qualité de nos interventions
             </p>
           </div>
 
           <div className="relative">
             {/* Timeline line simple */}
-            <div className="hidden md:block absolute top-8 left-0 right-0 h-px bg-gray-300"></div>
+            <div className="hidden md:block absolute top-12 left-0 right-0 h-1 bg-gradient-to-r from-red-200 via-red-400 to-red-200 rounded-full"></div>
             
-            <div className="grid md:grid-cols-4 gap-8 relative">
+            <div className="grid md:grid-cols-4 gap-12 relative">
               {[
                 { step: "01", title: "Analyse", description: "Étude de vos besoins et diagnostic technique" },
                 { step: "02", title: "Proposition", description: "Devis détaillé et planning d'intervention" },
                 { step: "03", title: "Réalisation", description: "Intervention par nos équipes qualifiées" },
                 { step: "04", title: "Suivi", description: "Contrôle qualité et service après-vente" },
               ].map((item, index) => (
-                <div key={index} className="text-center group relative">
+                <div key={index} className="text-center group relative process-step">
                   
                   {/* Circle avec couleurs inversées */}
-                  <div className="relative w-16 h-16 bg-red-600 text-white rounded-full flex items-center justify-center font-semibold mx-auto mb-4 transition-all duration-300 group-hover:bg-gray-800 group-hover:shadow-lg z-10">
-                    {item.step}
+                  <div className="relative w-20 h-20 bg-gradient-to-br from-red-600 to-red-700 text-white rounded-2xl flex items-center justify-center font-bold text-lg mx-auto mb-6 transition-all duration-300 group-hover:scale-110 group-hover:shadow-2xl z-10 shadow-lg">
+                    <span className="relative z-10">{item.step}</span>
+                    <div className="absolute inset-0 bg-white/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
                   
                   {/* Contenu */}
-                  <div className="transition-all duration-300 group-hover:-translate-y-1">
-                    <h4 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-red-600 transition-colors duration-300">
+                  <div className="transition-all duration-300 group-hover:-translate-y-2">
+                    <h4 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-red-600 transition-colors duration-300">
                       {item.title}
                     </h4>
-                    <p className="text-gray-600 leading-relaxed text-sm">
+                    <p className="text-gray-600 leading-relaxed text-base">
                       {item.description}
                     </p>
                   </div>
                   
                   {/* Ligne verticale mobile */}
                   {index < 3 && (
-                    <div className="md:hidden flex justify-center mt-6 mb-6">
-                      <div className="w-px h-12 bg-gray-300"></div>
+                    <div className="md:hidden flex justify-center mt-8 mb-8">
+                      <div className="w-1 h-16 bg-gradient-to-b from-red-400 to-red-200 rounded-full"></div>
                     </div>
                   )}
                 </div>
               ))}
+            </div>
+          </div>
+          
+          {/* Process CTA */}
+          <div className="text-center mt-16">
+            <div className="bg-gradient-to-r from-gray-50 to-red-50 rounded-2xl p-8 border border-red-100">
+              <h4 className="text-2xl font-bold text-gray-900 mb-4">
+                Prêt à commencer votre projet ?
+              </h4>
+              <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+                Contactez-nous dès aujourd'hui pour bénéficier de notre expertise et de notre processus éprouvé
+              </p>
+              <Link href="#contact">
+                <Button className="btn-primary-enhanced hover-glow text-white px-8 py-3 text-lg">
+                  Démarrer mon projet
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
